@@ -27,12 +27,7 @@ body {
             opacity: 0; /* Fade out */
             visibility: hidden; /* Hide completely after fading */
         }
-        /* --- End of popup CSS --- */
-
-        /* Minor addition for better usability */
-.clickable:hover {
-            cursor: pointer;
-        }
+        
 
 .avatar {
     width: 200px;
@@ -79,9 +74,6 @@ body {
 .btn:hover {
     fill: #74D3AE;
 }
-
-
-
 
 
 
