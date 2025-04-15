@@ -181,3 +181,24 @@ body {
       
     }
   }
+#popup-message {
+    position: fixed; /* Keep it in view */
+    top: 20px; /* Position from the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust horizontal centering */
+    background-color: #333; /* Dark background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Spacing inside */
+    border-radius: 5px; /* Rounded corners */
+    z-index: 1000; /* Ensure it's on top */
+    opacity: 1; /* Start visible */
+    visibility: visible; /* Start visible */
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out; /* Smooth fade out */
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /* Match body font? */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Add a subtle shadow */
+}
+
+#popup-message.hidden {
+    opacity: 0; /* Fade out */
+    visibility: hidden; /* Hide completely after fading */
+}
