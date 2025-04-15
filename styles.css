@@ -23,15 +23,15 @@ body {
             box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Add a subtle shadow */
         }
 
-        #popup-message.hidden {
+#popup-message.hidden {
             opacity: 0; /* Fade out */
             visibility: hidden; /* Hide completely after fading */
         }
         /* --- End of popup CSS --- */
 
         /* Minor addition for better usability */
-        .clickable:hover {
-             cursor: pointer;
+.clickable:hover {
+            cursor: pointer;
         }
 
 .avatar {
