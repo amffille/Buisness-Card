@@ -1,185 +1,181 @@
+/* --- Pop-up Styles --- */
+#popup-message {
+    position: fixed; /* Keep it in view */
+    top: 20px; /* Position from the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust horizontal centering */
+    background-color: #333; /* Dark background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Spacing inside */
+    border-radius: 5px; /* Rounded corners */
+    z-index: 1000; /* Ensure it's on top */
+    opacity: 1; /* Start visible */
+    visibility: visible; /* Start visible */
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out; /* Smooth fade out */
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /* Match body font or choose another */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Add a subtle shadow */
+}
+
+#popup-message.hidden {
+    opacity: 0; /* Fade out */
+    visibility: hidden; /* Hide completely after fading */
+}
+/* --- End of Pop-up Styles --- */
+
+
+/* --- Your Existing Styles --- */
 body {
     margin: 20px;
     background-color: #5B5F97;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    display:flex;
-    align-items: center;
+    /* display:flex; */ /* Removed flex from body as it might interfere with card centering */
+    /* align-items: center; */ /* Removed flex from body */
+    /* Add min-height if you want vertical centering via margin: auto on card */
+    min-height: calc(100vh - 40px); /* Full viewport height minus body margin */
+    display: flex; /* Use flex on body to center the card */
+    justify-content: center; /* Center card horizontally */
+    align-items: center; /* Center card vertically */
 }
 
 .avatar {
-    width: 200px;
-    height: 200px;
+    width: 150px; /* Adjusted size to better fit the card */
+    height: 150px; /* Adjusted size */
     border-radius: 60px;
-    margin-right: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    margin-right: 20px; /* Keep margin */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Slight adjustment */
+    object-fit: cover; /* Good practice for avatars */
+    /* Removed position: absolute if it was there */
 }
 
 .avatar:hover {
-    border-radius: 65px;
+    border-radius: 65px; /* Your hover effect */
 }
 
-.border-blue {
-    border: 1px dotted blue;
-}
+/* .border-blue { */ /* This class isn't used in the HTML */
+    /* border: 1px dotted blue; */
+/* } */
+
 .flex {
     display: flex;
+    align-items: center; /* Vertically align items in the flex container */
 }
-.block {
-    display:block;
-}
-.btns {
-    justify-content: space-around;
-    margin-top:20px;
-    margin-right: 50px;
-    margin-left: 50px;
-    font-size: 16px;
-}
-.btn {
 
+/* .block { */ /* Removed as .hover-animation-card handles the main block */
+    /* display:block; */
+/* } */
+
+.card-content { /* Added a wrapper for text content */
+   text-align: left;
+}
+
+.btns {
+    display: flex; /* Ensure buttons container is flex */
+    justify-content: space-around;
+    margin-top: 15px; /* Adjusted margin */
+    /* Removed side margins as padding/width on card handles spacing */
+    font-size: 16px; /* Keep font size */
+    width: 100%; /* Make button container take full width */
+}
+
+.btn {
     fill: #5B5F97;
-    
+    transition: fill 0.3s ease; /* Smooth transition */
 }
 
 .btn:hover {
     fill: #74D3AE;
 }
 
-
-
 .hover-animation-card {
     animation-duration: 2s;
     animation-name: slidein;
     animation-iteration-count: 1;
-    justify-content: space-around;
-    padding: 20px;
-    text-align: left;
-    position: relative;
-    margin: 0px auto;
-    width: 400px;
-    height: 250px;
+    /* justify-content: space-around; */ /* Use padding/flex on children */
+    padding: 25px; /* Increased padding */
+    /* text-align: left; */ /* Moved to card-content */
+    position: relative; /* Needed for pseudo-elements */
+    margin: auto; /* Center the card */
+    width: 450px; /* Slightly wider to accommodate content */
+    /* height: 250px; Removed fixed height, let content define it */
     background: #d8cefe;
-    border-radius: 75px;
-    font-family: 'comic sans',Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    border-radius: 25px; /* Adjusted radius */
+    font-family: 'Comic Sans MS', Arial, Helvetica, sans-serif; /* Added fallback */
+    font-size: 18px; /* Adjusted font size */
     font-weight: lighter;
     transition: 1s box-shadow;
     border: 1px solid #d8cefe;
     box-shadow: 0 4px 8px 0 #dafeb7, 0 6px 20px 0 #dafeb7;
-  }
-  
-  .hover-animation-card:hover {
+    display: flex; /* Use flex to layout avatar and text+buttons */
+    align-items: center; /* Align items vertically */
+}
+
+.hover-animation-card > div:last-child { /* Target the container for text and buttons */
+    display: flex;
+    flex-direction: column; /* Stack text and buttons vertically */
+    flex-grow: 1; /* Allow this div to take remaining space */
+    margin-left: 20px; /* Space between avatar and text block */
+}
+
+
+.hover-animation-card:hover {
     box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
-  }
-  
-  .hover-animation-card:hover::before, .hover-animation-card:hover::after {
-    padding: 20px;
+}
+
+.hover-animation-card:hover::before, .hover-animation-card:hover::after {
+    /* padding: 20px; */ /* Padding not needed on pseudo-elements */
     display: block;
     content: '';
     position: absolute;
-    width: 400px;
-    height: 250px;
+    width: 100%; /* Make pseudo-elements cover the card */
+    height: 100%; /* Make pseudo-elements cover the card */
+    top: 0; /* Align pseudo-elements */
+    left: 0; /* Align pseudo-elements */
     background: #74D3AE;
-    border-radius: 75px;
+    border-radius: 25px; /* Match card radius */
     z-index: -1;
     animation: 1s clockwise infinite;
     box-shadow: 4px 4px 8px 0 #74D3AE, 0 6px 20px 0 #74D3AE;
-  }
-  
-  .hover-animation-card:hover:after {
+}
+
+.hover-animation-card:hover::after {
     background: #dafeb7;
     animation: 2s counterclockwise infinite;
     box-shadow: 4px 4px 8px 0 #dafeb7, 0 6px 20px 0 #dafeb7;
-  }
-  
-  @keyframes clockwise {
-    0% {
-      top: -5px;
-      left: 0;
-    }
-    12% {
-      top: -2px;
-      left: 2px;
-    }
-    25% {
-      top: 0;
-      left: 5px;    
-    }
-    37% {
-      top: 2px;
-      left: 2px;
-    }
-    50% {
-      top: 5px;
-      left: 0;    
-    }
-    62% {
-      top: 2px;
-      left: -2px;
-    }
-    75% {
-      top: 0;
-      left: -5px;
-    }
-    87% {
-      top: -2px;
-      left: -2px;
-    }
-    100% {
-      top: -5px;
-      left: 0;    
-    }
-  }
-  
-  @keyframes counterclockwise {
-    0% {
-      top: -5px;
-      right: 0;
-    }
-    12% {
-      top: -2px;
-      right: 2px;
-    }
-    25% {
-      top: 0;
-      right: 5px;    
-    }
-    37% {
-      top: 2px;
-      right: 2px;
-    }
-    50% {
-      top: 5px;
-      right: 0;    
-    }
-    62% {
-      top: 2px;
-      right: -2px;
-    }
-    75% {
-      top: 0;
-      right: -5px;
-    }
-    87% {
-      top: -2px;
-      right: -2px;
-    }
-    100% {
-      top: -5px;
-      right: 0;    
-    }
-  }
+}
+
+@keyframes clockwise {
+    0% { transform: translate(-5px, 0px); }
+    25% { transform: translate(0px, 5px); }
+    50% { transform: translate(5px, 0px); }
+    75% { transform: translate(0px, -5px); }
+    100% { transform: translate(-5px, 0px); }
+}
+
+@keyframes counterclockwise {
+    0% { transform: translate(5px, 0px); }
+    25% { transform: translate(0px, -5px); }
+    50% { transform: translate(-5px, 0px); }
+    75% { transform: translate(0px, 5px); }
+    100% { transform: translate(5px, 0px); }
+}
 
 
-  @keyframes slidein {
+@keyframes slidein {
     from {
-      margin-top: -100%;
-      
+        opacity: 0;
+        transform: translateY(-50px); /* Slide down from top */
     }
-  
     to {
-      margin-top: 0%;
-      
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
+}
 
-
+/* Minor adjustments for text */
+h3, p, h4 {
+    margin: 2px 0; /* Reduce vertical margin */
+    color: #333; /* Darker text color for readability */
+}
+h3 { font-size: 1.2em; }
+p { font-size: 1em; }
+h4 { font-size: 0.9em; color: #555; } /* Slightly muted color for location */
