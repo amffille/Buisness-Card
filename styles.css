@@ -181,7 +181,7 @@ body {
       
     }
   }
-#popup-message {
+.popup-message {
     position: fixed; /* Keep it in view */
     top: 20px; /* Position from the top */
     left: 50%; /* Center horizontally */
@@ -198,7 +198,7 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Add a subtle shadow */
 }
 
-#popup-message.hidden {
+.popup-message.hidden {
     opacity: 0; /* Fade out */
     visibility: hidden; /* Hide completely after fading */
 }
